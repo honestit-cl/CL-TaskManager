@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class TaskManager {
 
+    private static String[][] taskList = new String[0][];
+
     public static void main(String[] args) {
         TaskManager.run();
     }
@@ -12,6 +14,7 @@ public class TaskManager {
     public static void run() {
 
         showWelcomeMessage();
+        loadTaskListFromFile();
         while (true) {
             showMainMenu();
             String userChoice = getUserChoice();
@@ -25,6 +28,15 @@ public class TaskManager {
             }
         }
         showExitMessage();
+        saveTaskListToFile();
+    }
+
+    private static void saveTaskListToFile() {
+
+    }
+
+    private static void loadTaskListFromFile() {
+
     }
 
     private static String getUserChoice() {
