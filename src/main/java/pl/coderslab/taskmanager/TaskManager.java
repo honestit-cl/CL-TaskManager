@@ -1,5 +1,8 @@
 package pl.coderslab.taskmanager;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class TaskManager {
 
     public static void main(String[] args) {
@@ -25,18 +28,39 @@ public class TaskManager {
     }
 
     private static String getUserChoice() {
-        return "";
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine().trim();
+//        return System.console().readLine();
     }
 
     private static boolean validateUserChoice(String userChoice) {
-        return false;
+        String[] validChoices = {"add", "remove", "list", "exit"};
+        // Do wykorzystania metody binarySearch potrzebujemy
+        // posortowanej tablicy!!!!
+        Arrays.sort(validChoices);
+        int index = Arrays.binarySearch(validChoices, userChoice);
+        return index >= 0;
     }
 
     private static void executeValidChoice(String userChoice) {
+        switch (userChoice) {
+            case "add":
+                // tutaj dostarcz obsługę
+                // executeAddChoice();
+                break;
+            case "remove":
+                // tutaj dostarcz obslugę
+                // executeRemoveChoice();
+                break;
+            case "list":
+                // tutaj dostarcz obsługę
+                // executeListChoice();
+                break;
+        }
     }
 
     private static boolean isExitChoice(String userChoice) {
-        return false;
+        return "exit".equalsIgnoreCase(userChoice);
     }
 
     private static void executeInvalidChoice(String userChoice) {
@@ -55,7 +79,7 @@ public class TaskManager {
     }
 
     private static void showExitMessage() {
-        System.out.println(ConsoleColors.RED + "Goodbye and remember to be back soon");
+        System.out.println(ConsoleColors.RED + "Goodbye and remember to come back soon");
         System.out.print(ConsoleColors.RESET);
     }
 
